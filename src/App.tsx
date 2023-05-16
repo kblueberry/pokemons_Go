@@ -3,7 +3,7 @@ import PokemonCard from './PokemonCard';
 import { useEffect, useState } from "react";
 
 function App() {
-  const [pokemons, setPokemons] = useState([]);
+  const [pokemons, setPokemons] = useState<Array<PokemonInfo>>([]);
 
   const fetchPokemons = async () => {
     const response = await fetch(

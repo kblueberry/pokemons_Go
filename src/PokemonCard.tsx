@@ -1,6 +1,10 @@
 import './PokemonCard.css';
 
-function PokemonCard({info}) {
+type PokemonProps = {
+  info: PokemonInfo
+}
+
+function PokemonCard({info}: PokemonProps) {
   return (
       <>
         <div className="pokemon_info">
