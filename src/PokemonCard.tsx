@@ -1,5 +1,6 @@
 import './PokemonCard.css';
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import SideBarPokemonCard from "./SideBarPokemonCard";
 
 type PokemonProps = {
   info: PokemonInfo

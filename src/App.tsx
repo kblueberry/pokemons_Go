@@ -2,6 +2,7 @@ import './App.css';
 import PokemonCard from './PokemonCard';
 import { useEffect, useState } from "react";
 import { API_LINK, POKEMONS_LIMIT } from "./constants.js";
+import SideBarPokemonCard from "./SideBarPokemonCard";
 
 function App() {
   const [pokemons, setPokemons] = useState<Array<PokemonInfo>>([]);
@@ -21,14 +22,17 @@ function App() {
 
   return (
       <div className="main_container">
-        <div className="pokemons">
-          {pokemons.map(pokemon => (
-              <PokemonCard key={pokemon.name} info={pokemon}/>
-          ))}
+        <div className="pokemons_container">
+          <div className="pokemon_card">
+            {pokemons.map(pokemon => (
+                <PokemonCard key={pokemon.name} info={pokemon}/>
+            ))}
+          </div>
+          <button className="action_load_more">
+            Load more
+          </button>
         </div>
-        <button className="action_load_more">
-          Load more
-        </button>
+        <SideBarPokemonCard/>
       </div>
   )
 }
