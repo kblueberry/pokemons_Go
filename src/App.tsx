@@ -1,16 +1,18 @@
 import './App.css';
 import PokemonCard from './PokemonCard';
 import { useEffect, useState } from "react";
+import { API_LINK, POKEMONS_LIMIT } from "./constants.js";
 
 function App() {
   const [pokemons, setPokemons] = useState<Array<PokemonInfo>>([]);
 
   const fetchPokemons = async () => {
     const response = await fetch(
-        "https://pokeapi.co/api/v2/pokemon/?limit=12"
+        `${API_LINK}pokemon/?limit=${POKEMONS_LIMIT}`
     );
     const responseToJson = await response.json();
     setPokemons(responseToJson.results);
+    console.log('RESPONSE', pokemons);
   };
 
   useEffect(() => {
