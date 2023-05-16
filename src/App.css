@@ -13,6 +13,7 @@
 }
 
 .action_load_more {
+    margin-top: 15px;
     background-color: dodgerblue;
     width: 160px;
 }
