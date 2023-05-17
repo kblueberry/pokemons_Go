@@ -1,7 +1,7 @@
 import './SideBarPokemonCard.css';
 import { usePokemonDetails } from "./PokemonDetailsProvider";
 
-function SideBarPokemonCard() {
+function PokemonSidebarContent() {
   const {loading, error, data} = usePokemonDetails();
 
   return <aside>
@@ -22,4 +22,4 @@ function SideBarPokemonCard() {
   </aside>
 }
 
-export default SideBarPokemonCard
+export default PokemonSidebarContent

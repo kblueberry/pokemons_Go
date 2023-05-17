@@ -3,7 +3,7 @@ import './PokemonsMain.css';
 import { useEffect, useState } from "react";
 import { fetchAll } from "./ApiClient";
 
-export default function PokemonsMain() {
+function PokemonsMain() {
   const [pokemons, setPokemons] = useState<Array<PokemonGeneralInfo>>([]);
 
   const fetchPokemons = async () => {
@@ -27,3 +27,5 @@ export default function PokemonsMain() {
     </button>
   </div>
 }
+
+export default PokemonsMain

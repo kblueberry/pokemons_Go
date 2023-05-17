@@ -1,5 +1,5 @@
 import './App.css';
-import SideBarPokemonCard from "./SideBarPokemonCard";
+import PokemonSidebarContent from "./PokemonSidebarContent";
 import PokemonsMain from "./PokemonsMain";
 import PokemonDetailsProvider from "./PokemonDetailsProvider";
 
@@ -9,7 +9,7 @@ function App() {
         <PokemonDetailsProvider>
           <PokemonsMain/>
         </PokemonDetailsProvider>
-        <SideBarPokemonCard/>
+        <PokemonSidebarContent/>
       </div>
   )
 }
