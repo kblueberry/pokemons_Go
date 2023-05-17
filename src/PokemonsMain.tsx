@@ -1,18 +1,14 @@
 import PokemonCard from "./PokemonCard";
 import './PokemonsMain.css';
-import { API_LINK, POKEMONS_LIMIT } from "./constants";
 import { useEffect, useState } from "react";
+import { fetchAll } from "./ApiClient";
 
 export default function PokemonsMain() {
-  const [pokemons, setPokemons] = useState<Array<PokemonInfo>>([]);
+  const [pokemons, setPokemons] = useState<Array<PokemonGeneralInfo>>([]);
 
   const fetchPokemons = async () => {
-    const response = await fetch(
-        `${API_LINK}pokemon/?limit=${POKEMONS_LIMIT}`
-    );
-    const responseToJson = await response.json();
-    setPokemons(responseToJson.results);
-    console.log('RESPONSE', pokemons);
+    fetchAll().then((response: PokemonsDataChunk) =>
+        setPokemons(response.results));
   };
 
   useEffect(() => {

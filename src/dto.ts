@@ -1,4 +1,4 @@
-type PokemonInfo = {
+type PokemonGeneralInfo = {
   name: string,
   url: string
 }
@@ -7,20 +7,20 @@ type PokemonsDataChunk = {
   count: number,
   next: string,
   previous: string,
-  results: Array<PokemonInfo>
+  results: Array<PokemonGeneralInfo>
 }
 
 type PokemonDetails = {
   abilities: Array<{
-    ability: PokemonInfo,
+    ability: PokemonGeneralInfo,
     is_hidden: boolean,
     slot: number
   }>,
   base_experience: number,
-  forms: Array<PokemonInfo>,
+  forms: Array<PokemonGeneralInfo>,
   game_indices: Array<{
     game_index: number,
-    version: PokemonInfo
+    version: PokemonGeneralInfo
   }>,
   height: number,
   held_items: Array<any>,
@@ -28,26 +28,26 @@ type PokemonDetails = {
   is_default: boolean,
   location_area_encounters: string,
   moves: Array<{
-    move: PokemonInfo,
+    move: PokemonGeneralInfo,
     version_group_details: Array<{
       level_learned_at: number,
-      move_learn_method: PokemonInfo,
-      version_group: PokemonInfo
+      move_learn_method: PokemonGeneralInfo,
+      version_group: PokemonGeneralInfo
     }>
   }>,
   name: string,
   order: number,
   past_types: Array<any>,
-  species: PokemonInfo,
+  species: PokemonGeneralInfo,
   sprites: Sprite,
   stats: {
     base_stat: number,
     effort: number,
-    stat: PokemonInfo
+    stat: PokemonGeneralInfo
   },
   types: Array<{
     slot: number,
-    type: PokemonInfo
+    type: PokemonGeneralInfo
   }>,
   weight: number
 }

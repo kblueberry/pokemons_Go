@@ -2,7 +2,7 @@ import './PokemonCard.css';
 import { usePokemonDetails } from "./PokemonDetailsProvider";
 
 type PokemonProps = {
-  info: PokemonInfo
+  info: PokemonGeneralInfo
 }
 
 function PokemonCard({info}: PokemonProps) {

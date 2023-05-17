@@ -1,9 +1,8 @@
-import { API_LINK, POKEMONS_LIMIT } from "./constants";
+const POKEMONS_LIMIT = 12;
 
 export function fetchAll() {
-  return fetch(
-      `${API_LINK}pokemon/?limit=${POKEMONS_LIMIT}`
-  ).then(response => response.json() as Array<PokemonInfo>)
+  return fetch(`https://pokeapi.co/api/v2/pokemon/?limit=${POKEMONS_LIMIT}`)
+      .then(response => response.json() as PokemonsDataChunk)
 }
 
 export function fetchOne(url: string) {
