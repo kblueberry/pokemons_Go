@@ -1,5 +1,12 @@
 aside {
     width: 200px;
     margin-left: 40px;
+}
+
+.content_loaded {
     border: 1px solid white;
+}
+
+.content_loading {
+    border: none;
 }

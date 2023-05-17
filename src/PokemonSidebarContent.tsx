@@ -4,9 +4,11 @@ import { usePokemonDetails } from "./PokemonDetailsProvider";
 
 function PokemonSidebarContent() {
   const {loading, error, data} = usePokemonDetails();
-  const loadingSpinner = <div className="loader"></div>
+  const loadingSpinner = <div className="loader"></div>;
 
-  return <aside>
+  const addCssClass = (): string => loading ? 'content_loading' : 'content_loaded';
+
+  return <aside className={addCssClass()}>
     {loading ? loadingSpinner : <>
       <h4>Hello</h4>
       <table width="100%" border="0">
