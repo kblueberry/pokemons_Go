@@ -1,6 +1,9 @@
 import './SideBarPokemonCard.css';
+import { usePokemonDetails } from "./PokemonDetailsProvider";
 
 function SideBarPokemonCard() {
+  const {loading, error, data} = usePokemonDetails();
+
   return <aside>
     <h4>Hello</h4>
     <table width="100%" border="0">

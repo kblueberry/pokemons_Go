@@ -1,19 +1,13 @@
 import './PokemonCard.css';
-import { useState } from "react";
+import { usePokemonDetails } from "./PokemonDetailsProvider";
 
 type PokemonProps = {
   info: PokemonInfo
 }
 
 function PokemonCard({info}: PokemonProps) {
-  const [pokemonInfo, setPokemonInfo] = useState<PokemonDetails>(null);
+  const {onChange: onPokemonChange} = usePokemonDetails();
 
-  const getPokemonInfo = async () => {
-    const response = await fetch(`${info.url}`);
-    const responseToJson = await response.json();
-    console.log('Response=', responseToJson);
-    setPokemonInfo(responseToJson);
-  };
 
   return (
       <>
@@ -21,7 +15,7 @@ function PokemonCard({info}: PokemonProps) {
           <h5>{info.name.charAt(0).toUpperCase()
               + info.name.slice(1)}</h5>
           <a className="pokemon_details_open_action"
-             onClick={getPokemonInfo}>
+             onClick={() => onPokemonChange(info.url)}>
             Get info
           </a>
         </div>

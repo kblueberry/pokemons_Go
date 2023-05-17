@@ -1,6 +1,6 @@
 import PokemonCard from "./PokemonCard";
 import './PokemonsMain.css';
-import { API_LINK, POKEMONS_LIMIT } from "./constants.js";
+import { API_LINK, POKEMONS_LIMIT } from "./constants";
 import { useEffect, useState } from "react";
 
 export default function PokemonsMain() {
