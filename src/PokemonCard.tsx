@@ -1,6 +1,5 @@
 import './PokemonCard.css';
 import { useState } from "react";
-import SideBarPokemonCard from "./SideBarPokemonCard";
 
 type PokemonProps = {
   info: PokemonInfo
@@ -13,9 +12,7 @@ function PokemonCard({info}: PokemonProps) {
     const response = await fetch(`${info.url}`);
     const responseToJson = await response.json();
     console.log('Response=', responseToJson);
-
     setPokemonInfo(responseToJson);
-    console.log('Details=', pokemonInfo);
   };
 
   return (

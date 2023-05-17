@@ -2,7 +2,20 @@ import './SideBarPokemonCard.css';
 
 function SideBarPokemonCard() {
   return <aside>
-    Aside card
+    <h4>Hello</h4>
+    <table width="100%" border="0">
+      <tbody>
+      <tr valign="top">
+        <td width="80%">
+          <p>JJ</p>
+        </td>
+
+        <td width="20%">
+          <p>II</p>
+        </td>
+      </tr>
+      </tbody>
+    </table>
   </aside>
 }
 
