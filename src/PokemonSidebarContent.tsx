@@ -8,6 +8,7 @@ function PokemonSidebarContent() {
 
   const addCssClass = (): string => loading ? 'content_loading' : 'content_loaded';
 
+  // TODO fix show Sidebar on click from the list
   return <aside className={addCssClass()}>
     {loading ? loadingSpinner : <>
       <h4>Hello</h4>
