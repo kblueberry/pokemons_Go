@@ -4,19 +4,25 @@ import { usePokemonDetails } from "./PokemonDetailsProvider";
 
 function PokemonSidebarContent() {
   const {loading, error, data} = usePokemonDetails();
-  const loadingSpinner = <div className="loader"></div>;
 
   const addCssClass = (): string => loading ? 'content_loading' : 'content_loaded';
 
-  // TODO fix show Sidebar on click from the list
+  if (loading) {
+    return <div className="loader"></div>;
+  }
+
+  if (!data) {
+    return null;
+  }
+
+
   return <aside className={addCssClass()}>
-    {loading ? loadingSpinner : <>
       <h4>Hello</h4>
       <table width="100%" border="0">
         <tbody>
         <tr valign="top">
           <td width="80%">
-            <p>JJ</p>
+            <p>{data.name}</p>
           </td>
 
           <td width="20%">
@@ -25,7 +31,6 @@ function PokemonSidebarContent() {
         </tr>
         </tbody>
       </table>
-    </>}
   </aside>
 }
 

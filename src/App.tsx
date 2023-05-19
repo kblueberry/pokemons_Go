@@ -8,8 +8,8 @@ function App() {
       <div className="main_container">
         <PokemonDetailsProvider>
           <PokemonsMain/>
+          <PokemonSidebarContent/>
         </PokemonDetailsProvider>
-        <PokemonSidebarContent/>
       </div>
   )
 }
