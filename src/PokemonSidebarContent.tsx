@@ -7,9 +7,11 @@ export default function PokemonSidebarContent() {
   const { loading, error, data } = usePokemonDetails();
 
   if (loading) {
-    return <aside className="content_loading">
-      <div className="loader"></div>
-    </aside>;
+    return (
+      <aside className="content_loading">
+        <div className="loader"></div>
+      </aside>
+    );
   }
 
   if (!data) {
@@ -18,20 +20,24 @@ export default function PokemonSidebarContent() {
 
   return (
     <aside className="content_loaded">
-      <h4 className="pokemon_content_header">{capitalizeFirstLetter(data.name)}</h4>
+      <h4 className="pokemon_content_header">
+        {capitalizeFirstLetter(data.name)}
+      </h4>
       <table width="100%" border="0">
         <tbody>
-          <th className="cell">Type</th>
-          <th className="cell">Fire</th>
+          <tr>
+            <th className="cell">Type</th>
+            <th className="cell">Fire</th>
+          </tr>
           {data.stats.map((unit) => (
-            <AbilityRow key={unit.stat.name}
-                        leftSide={capitalizeFirstLetter(unit.stat.name)}
-                        rightSide={unit.base_stat} />
+            <AbilityRow
+              key={unit.stat.name}
+              abilityKey={capitalizeFirstLetter(unit.stat.name)}
+              abilityValue={unit.base_stat}
+            />
           ))}
-          <AbilityRow leftSide="Weight"
-                      rightSide={data.weight} />
-          <AbilityRow leftSide="Total moves"
-                      rightSide={data.moves.length} />
+          <AbilityRow abilityKey="Weight" abilityValue={data.weight} />
+          <AbilityRow abilityKey="Total moves" abilityValue={data.moves.length} />
         </tbody>
       </table>
     </aside>
@@ -39,20 +45,20 @@ export default function PokemonSidebarContent() {
 }
 
 export function AbilityRow({
-  leftSide,
-  rightSide,
+  abilityKey,
+  abilityValue,
 }: {
-  leftSide: string;
-  rightSide: number | string;
+  abilityKey: string;
+  abilityValue: number | string;
 }) {
   return (
     <tr valign="top">
       <td width="75%" className="cell">
-        {leftSide}
+        {abilityKey}
       </td>
 
       <td width="25%" className="cell">
-        {rightSide}
+        {abilityValue}
       </td>
     </tr>
   );
