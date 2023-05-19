@@ -40,11 +40,11 @@ type PokemonDetails = {
   past_types: Array<any>,
   species: PokemonGeneralInfo,
   sprites: Sprite,
-  stats: {
+  stats: Array<{
     base_stat: number,
     effort: number,
     stat: PokemonGeneralInfo
-  },
+  }>,
   types: Array<{
     slot: number,
     type: PokemonGeneralInfo

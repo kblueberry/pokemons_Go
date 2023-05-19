@@ -1,11 +1,12 @@
-import './PokemonSidebarContent.css';
-import './spinner.css';
+import "./PokemonSidebarContent.css";
+import "./spinner.css";
 import { usePokemonDetails } from "./PokemonDetailsProvider";
 
-function PokemonSidebarContent() {
-  const {loading, error, data} = usePokemonDetails();
+export default function PokemonSidebarContent() {
+  const { loading, error, data } = usePokemonDetails();
 
-  const addCssClass = (): string => loading ? 'content_loading' : 'content_loaded';
+  const addCssClass = (): string =>
+    loading ? "content_loading" : "content_loaded";
 
   if (loading) {
     return <div className="loader"></div>;
@@ -15,23 +16,37 @@ function PokemonSidebarContent() {
     return null;
   }
 
-
-  return <aside className={addCssClass()}>
-      <h4>Hello</h4>
+  return (
+    <aside className={addCssClass()}>
+      <h4 className="pokemon_content_header">{data.name}</h4>
       <table width="100%" border="0">
         <tbody>
-        <tr valign="top">
-          <td width="80%">
-            <p>{data.name}</p>
-          </td>
-
-          <td width="20%">
-            <p>II</p>
-          </td>
-        </tr>
+          <Row leftSide="Type" rightSide="Fire" />
+          {data.stats.map((unit) => (
+            <Row leftSide={unit.stat.name} rightSide={unit.effort} />
+          ))}
         </tbody>
       </table>
-  </aside>
+    </aside>
+  );
 }
 
-export default PokemonSidebarContent
+export function Row({
+  leftSide,
+  rightSide,
+}: {
+  leftSide: string;
+  rightSide: number | string;
+}) {
+  return (
+    <tr valign="top">
+      <td width="80%" className="cell">
+        {leftSide}
+      </td>
+
+      <td width="20%" className="cell">
+        {rightSide}
+      </td>
+    </tr>
+  );
+}

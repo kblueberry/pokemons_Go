@@ -1,6 +1,11 @@
 aside {
-    width: 200px;
+    width: 260px;
     margin-left: 40px;
+    padding: 5px;
+}
+
+.pokemon_content_header {
+    text-align: center;
 }
 
 .content_loaded {
@@ -9,4 +14,9 @@ aside {
 
 .content_loading {
     border: none;
+}
+
+.cell {
+    border: 1px solid white;
+    padding: 3px;
 }
