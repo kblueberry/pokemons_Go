@@ -6,11 +6,10 @@ import { capitalizeFirstLetter } from "./helper";
 export default function PokemonSidebarContent() {
   const { loading, error, data } = usePokemonDetails();
 
-  const addCssClass = (): string =>
-    loading ? "content_loading" : "content_loaded";
-
   if (loading) {
-    return <div className="loader"></div>;
+    return <aside className="content_loading">
+      <div className="loader"></div>
+    </aside>;
   }
 
   if (!data) {
@@ -18,7 +17,7 @@ export default function PokemonSidebarContent() {
   }
 
   return (
-    <aside className={addCssClass()}>
+    <aside className="content_loaded">
       <h4 className="pokemon_content_header">{capitalizeFirstLetter(data.name)}</h4>
       <table width="100%" border="0">
         <tbody>
@@ -28,6 +27,10 @@ export default function PokemonSidebarContent() {
                  leftSide={capitalizeFirstLetter(unit.stat.name)}
                  rightSide={unit.base_stat} />
           ))}
+          <Row leftSide="Weight"
+               rightSide={data.weight} />
+          <Row leftSide="Total moves"
+               rightSide={data.moves.length} />
         </tbody>
       </table>
     </aside>
