@@ -1,6 +1,7 @@
 import "./PokemonSidebarContent.css";
 import "./spinner.css";
 import { usePokemonDetails } from "./PokemonDetailsProvider";
+import { capitalizeFirstLetter } from "./helper";
 
 export default function PokemonSidebarContent() {
   const { loading, error, data } = usePokemonDetails();
@@ -18,12 +19,14 @@ export default function PokemonSidebarContent() {
 
   return (
     <aside className={addCssClass()}>
-      <h4 className="pokemon_content_header">{data.name}</h4>
+      <h4 className="pokemon_content_header">{capitalizeFirstLetter(data.name)}</h4>
       <table width="100%" border="0">
         <tbody>
           <Row leftSide="Type" rightSide="Fire" />
           {data.stats.map((unit) => (
-            <Row leftSide={unit.stat.name} rightSide={unit.effort} />
+            <Row key={unit.stat.name}
+                 leftSide={capitalizeFirstLetter(unit.stat.name)}
+                 rightSide={unit.base_stat} />
           ))}
         </tbody>
       </table>
@@ -40,11 +43,11 @@ export function Row({
 }) {
   return (
     <tr valign="top">
-      <td width="80%" className="cell">
+      <td width="75%" className="cell">
         {leftSide}
       </td>
 
-      <td width="20%" className="cell">
+      <td width="25%" className="cell">
         {rightSide}
       </td>
     </tr>

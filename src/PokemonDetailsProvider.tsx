@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useContext, useState } from "react";
-import { fetchOne } from "./ApiClient";
+import { fetchOne } from "./helper";
 
 type PokemonDetailsState = {
   loading: boolean;

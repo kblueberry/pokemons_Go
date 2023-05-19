@@ -1,13 +1,14 @@
 import "./PokemonCard.css";
 import { usePokemonDetails } from "./PokemonDetailsProvider";
+import { capitalizeFirstLetter } from "./helper";
 
 function PokemonCard({ info }: { info: PokemonGeneralInfo }) {
-  const { data, onChange: onPokemonChange } = usePokemonDetails();
+  const { onChange: onPokemonChange } = usePokemonDetails();
 
   return (
       <>
         <div className="pokemon_info">
-          <h5>{info.name.charAt(0).toUpperCase() + info.name.slice(1)}</h5>
+          <h5>{capitalizeFirstLetter(info.name)}</h5>
           <a
               className="pokemon_details_open_action"
               onClick={() => onPokemonChange(info.url)}

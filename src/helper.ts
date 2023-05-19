@@ -9,3 +9,7 @@ export function fetchOne(url: string) {
   return fetch(url)
       .then(response => response.json() as PokemonDetails)
 }
+
+export function capitalizeFirstLetter(value) {
+  return value.charAt(0).toUpperCase() + value.slice(1)
+}

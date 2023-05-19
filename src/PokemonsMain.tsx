@@ -1,7 +1,7 @@
 import PokemonCard from "./PokemonCard";
 import './PokemonsMain.css';
 import { useCallback, useEffect, useState } from "react";
-import { fetchPage } from "./ApiClient";
+import { fetchPage } from "./helper";
 
 function PokemonsMain() {
   const [pokemons, setPokemons] = useState<Array<PokemonGeneralInfo>>([]);
