@@ -18,7 +18,6 @@ export default function PokemonSidebarContent() {
   if (!data) {
     return null;
   }
-  console.log("child data", data);
 
   return (
     <aside className="content_loaded">
