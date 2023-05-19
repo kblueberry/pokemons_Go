@@ -1,13 +1,8 @@
 import './PokemonCard.css';
 import { usePokemonDetails } from "./PokemonDetailsProvider";
 
-type PokemonProps = {
-  info: PokemonGeneralInfo
-}
-
-function PokemonCard({info}: PokemonProps) {
+function PokemonCard({info}: { info: PokemonGeneralInfo }) {
   const {onChange: onPokemonChange} = usePokemonDetails();
-
 
   return (
       <>

@@ -1,19 +1,27 @@
 import PokemonCard from "./PokemonCard";
 import './PokemonsMain.css';
-import { useEffect, useState } from "react";
-import { fetchAll } from "./ApiClient";
+import { useCallback, useEffect, useState } from "react";
+import { fetchPage } from "./ApiClient";
 
 function PokemonsMain() {
   const [pokemons, setPokemons] = useState<Array<PokemonGeneralInfo>>([]);
+  const [offset, setOffset] = useState<number>(0);
+  const [hasNext, setHasNext] = useState<boolean>(true);
 
-  const fetchPokemons = async () => {
-    fetchAll().then((response: PokemonsDataChunk) =>
-        setPokemons(response.results));
-  };
+  const fetchPokemons = useCallback(() => {
+    if (!hasNext) return;
+    fetchPage(offset).then((response: PokemonsDataChunk) => {
+      setOffset((old: number) => old + response.results.length);
+      setHasNext(!!response.next);
+      setPokemons((old: Array<PokemonGeneralInfo>) => [...old, ...response.results]);
+    });
+  }, [offset]);
 
   useEffect(() => {
-    fetchPokemons();
-  }, []);
+    if (offset === 0) {
+      fetchPokemons();
+    }
+  }, [offset, fetchPokemons]);
 
   return <div className="pokemons_container">
     <div className="pokemon_cards">
@@ -22,7 +30,8 @@ function PokemonsMain() {
                        info={pokemon}/>
       ))}
     </div>
-    <button className="action_load_more">
+    <button className="action_load_more"
+            onClick={fetchPokemons}>
       Load more
     </button>
   </div>
