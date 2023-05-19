@@ -1,0 +1,23 @@
+aside {
+    width: 260px;
+    margin-left: 40px;
+    padding: 5px;
+}
+
+.pokemon_content_header {
+    text-align: center;
+}
+
+.content_loaded {
+    border: 1px solid white;
+}
+
+.content_loading {
+    border: none;
+}
+
+.cell {
+    text-align: center;
+    border: 1px solid white;
+    padding: 3px;
+}
