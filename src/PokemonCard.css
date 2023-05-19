@@ -10,4 +10,12 @@
 
 .pokemon_details_open_action {
     font-size: .7em;
+    font-weight: 500;
+    color: #116cdb;
+    text-decoration: inherit;
+    cursor: pointer;
+}
+
+.pokemon_details_open_action:hover {
+    color: #2d72fa;
 }
