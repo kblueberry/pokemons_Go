@@ -1,7 +1,7 @@
-export const POKEMONS_LIMIT = 12;
+import { GlobalConstants } from "./constants";
 
-export function fetchPage(offset = 0) {
-  return fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${POKEMONS_LIMIT}`)
+export function fetchPage(offset = GlobalConstants.startPageOffset) {
+  return fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${GlobalConstants.pokemonLimit}`)
       .then(response => response.json() as PokemonsDataChunk)
 }
 

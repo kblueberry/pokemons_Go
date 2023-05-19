@@ -2,6 +2,7 @@ import "./PokemonSidebarContent.css";
 import "./spinner.css";
 import { usePokemonDetails } from "./PokemonDetailsProvider";
 import { capitalizeFirstLetter } from "./helper";
+import { GlobalConstants } from "./constants";
 
 export default function PokemonSidebarContent() {
   const { loading, error, data } = usePokemonDetails();
@@ -17,29 +18,35 @@ export default function PokemonSidebarContent() {
   if (!data) {
     return null;
   }
+  console.log("child data", data);
 
   return (
     <aside className="content_loaded">
-      <h4 className="pokemon_content_header">
-        {capitalizeFirstLetter(data.name)}
-      </h4>
-      <table width="100%" border="0">
-        <tbody>
-          <tr>
-            <th className="cell">Type</th>
-            <th className="cell">Fire</th>
-          </tr>
-          {data.stats.map((unit) => (
+      {error ? <p>{GlobalConstants.fetchPokemonError}</p> : <>
+        <h4 className="pokemon_content_header">
+          {capitalizeFirstLetter(data.name)}
+        </h4>
+        <table width="100%" border="0">
+          <tbody>
+            <tr>
+              <th className="cell">{GlobalConstants.abilityColumnName}</th>
+              <th className="cell">{GlobalConstants.abilityValueColumnName}</th>
+            </tr>
+            {data.stats.map((unit) => (
+              <AbilityRow
+                key={unit.stat.name}
+                abilityKey={capitalizeFirstLetter(unit.stat.name)}
+                abilityValue={unit.base_stat}
+              />
+            ))}
+            <AbilityRow abilityKey={GlobalConstants.abilityWeightProperty} abilityValue={data.weight} />
             <AbilityRow
-              key={unit.stat.name}
-              abilityKey={capitalizeFirstLetter(unit.stat.name)}
-              abilityValue={unit.base_stat}
+              abilityKey={GlobalConstants.abilityTotalMovesProperty}
+              abilityValue={data.moves.length}
             />
-          ))}
-          <AbilityRow abilityKey="Weight" abilityValue={data.weight} />
-          <AbilityRow abilityKey="Total moves" abilityValue={data.moves.length} />
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      </>}
     </aside>
   );
 }

@@ -2,6 +2,7 @@ import PokemonCard from "./PokemonCard";
 import './PokemonsMain.css';
 import { useCallback, useEffect, useState } from "react";
 import { fetchPage } from "./helper";
+import { GlobalConstants } from "./constants";
 
 function PokemonsMain() {
   const [pokemons, setPokemons] = useState<Array<PokemonGeneralInfo>>([]);
@@ -32,7 +33,7 @@ function PokemonsMain() {
     </div>
     <button className="action_load_more"
             onClick={fetchPokemons}>
-      Load more
+      {GlobalConstants.loadMoreAction}
     </button>
   </div>
 }

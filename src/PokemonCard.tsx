@@ -1,6 +1,7 @@
 import "./PokemonCard.css";
 import { usePokemonDetails } from "./PokemonDetailsProvider";
 import { capitalizeFirstLetter } from "./helper";
+import { GlobalConstants } from "./constants";
 
 function PokemonCard({ info }: { info: PokemonGeneralInfo }) {
   const { onChange: onPokemonChange } = usePokemonDetails();
@@ -13,7 +14,7 @@ function PokemonCard({ info }: { info: PokemonGeneralInfo }) {
               className="pokemon_details_open_action"
               onClick={() => onPokemonChange(info.url)}
           >
-            Get info
+            {GlobalConstants.getPokemonIngoAction}
           </a>
         </div>
       </>
