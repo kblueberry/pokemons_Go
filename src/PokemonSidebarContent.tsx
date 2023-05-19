@@ -21,23 +21,24 @@ export default function PokemonSidebarContent() {
       <h4 className="pokemon_content_header">{capitalizeFirstLetter(data.name)}</h4>
       <table width="100%" border="0">
         <tbody>
-          <Row leftSide="Type" rightSide="Fire" />
+          <th className="cell">Type</th>
+          <th className="cell">Fire</th>
           {data.stats.map((unit) => (
-            <Row key={unit.stat.name}
-                 leftSide={capitalizeFirstLetter(unit.stat.name)}
-                 rightSide={unit.base_stat} />
+            <AbilityRow key={unit.stat.name}
+                        leftSide={capitalizeFirstLetter(unit.stat.name)}
+                        rightSide={unit.base_stat} />
           ))}
-          <Row leftSide="Weight"
-               rightSide={data.weight} />
-          <Row leftSide="Total moves"
-               rightSide={data.moves.length} />
+          <AbilityRow leftSide="Weight"
+                      rightSide={data.weight} />
+          <AbilityRow leftSide="Total moves"
+                      rightSide={data.moves.length} />
         </tbody>
       </table>
     </aside>
   );
 }
 
-export function Row({
+export function AbilityRow({
   leftSide,
   rightSide,
 }: {
