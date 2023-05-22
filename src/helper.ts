@@ -24,6 +24,10 @@ export function setColorHex(type: string) {
       return '#ae5bb5';
     case 'flying':
       return '#0af7f7';
+    case 'bug':
+      return '#77a832';
+    case 'normal':
+      return '#d91838';
     default :
       return '#f7e80a';
   }
