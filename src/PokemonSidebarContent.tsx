@@ -25,7 +25,7 @@ export default function PokemonSidebarContent() {
         <h4 className="pokemon_content_header">
           {capitalizeFirstLetter(data.name)}
         </h4>
-        <table width="100%" border="0">
+        <table className="pokemon_table">
           <tbody>
             <tr>
               <th className="cell">{GlobalConstants.abilityColumnName}</th>
@@ -58,12 +58,12 @@ export function AbilityRow({
   abilityValue: number | string;
 }) {
   return (
-    <tr valign="top">
-      <td width="75%" className="cell">
+    <tr>
+      <td className="cell ability_key">
         {abilityKey}
       </td>
 
-      <td width="25%" className="cell">
+      <td className="cell ability_value">
         {abilityValue}
       </td>
     </tr>
