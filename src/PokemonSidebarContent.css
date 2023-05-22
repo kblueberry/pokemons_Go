@@ -16,8 +16,20 @@ aside {
     border: none;
 }
 
+.pokemon_table {
+    width: 100%;
+}
+
 .cell {
     text-align: center;
     border: 1px solid white;
     padding: 3px;
+}
+
+.ability_key {
+    width: 75%;
+}
+
+.ability_value {
+    width: 25%;
 }

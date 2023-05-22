@@ -21,30 +21,34 @@ export default function PokemonDetailsProvider({
 }: {
   children: ReactNode;
 }) {
-  const [fetchState, setFetchState] = useState({});
+  const [fetchState, setFetchState] = useState<PokemonDetailsState>({
+    loading: false,
+    error: null,
+    data: null
+  } as PokemonDetailsState);
+  const { loading, error, data } = fetchState;
 
   const onChange = (url: string) => {
     setFetchState({
       loading: true,
       error: null,
-    });
+    } as PokemonDetailsState);
     fetchOne(url)
       .then((pokemon) => {
         setFetchState({
           loading: false,
           error: null,
           data: pokemon,
-        });
+        } as PokemonDetailsState);
       })
       .catch((error) =>
         setFetchState({
           loading: false,
           error,
-        })
+        } as PokemonDetailsState)
       );
   };
 
-  const { loading, error, data } = fetchState;
   return (
     <PokemonDetailsContext.Provider
       value={{
