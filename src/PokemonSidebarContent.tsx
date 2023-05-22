@@ -28,10 +28,10 @@ export default function PokemonSidebarContent() {
         </h4>
         <div className="type_wrapper">
           {data?.types.map(pokemonType => (
-              <PokemonType pokemonType={pokemonType.type.name} />
+              <PokemonType key={pokemonType.slot} pokemonType={pokemonType.type.name} />
           ))}
         </div>
-        <table width="100%" border="0">
+        <table className="pokemon_main">
           <tbody>
             <tr>
               <th className="cell">{GlobalConstants.abilityColumnName}</th>

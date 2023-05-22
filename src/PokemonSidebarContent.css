@@ -6,6 +6,13 @@ aside {
 
 .pokemon_content_header {
     text-align: center;
+    margin: 6px 0 12px;
+}
+
+.type_wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .content_loaded {
@@ -16,15 +23,14 @@ aside {
     border: none;
 }
 
+.pokemon_main {
+    width: 100%;
+    margin-top: 5px;
+}
+
 .cell {
     text-align: center;
     border: 1px solid white;
     padding: 3px;
-}
-
-.type_wrapper {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
 }
 
