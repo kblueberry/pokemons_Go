@@ -1,7 +1,7 @@
 import "./PokemonSidebarContent.css";
 import "./spinner.css";
 import { usePokemonDetails } from "./PokemonDetailsProvider";
-import { capitalizeFirstLetter } from "./helper";
+import { capitalizeFirstLetter, createPokemonAbility } from "./helper";
 import { GlobalConstants } from "./constants";
 import PokemonType from "./PokemonType";
 
@@ -20,6 +20,15 @@ export default function PokemonSidebarContent() {
     return null;
   }
 
+  const weightObj = createPokemonAbility(GlobalConstants.abilityWeightProperty, data.weight),
+      movesObj = createPokemonAbility(GlobalConstants.abilityTotalMovesProperty, data.moves.length);
+  let pokemonAbilities = [...data.stats].map(stat => {
+    const obj = {};
+    obj[stat.stat.name] = stat.base_stat
+    return obj;
+  });
+  pokemonAbilities = [...pokemonAbilities, ...[weightObj, movesObj]];
+
   return (
     <aside className="content_loaded">
       {error ? <p>{GlobalConstants.fetchPokemonError}</p> : <>
@@ -28,7 +37,8 @@ export default function PokemonSidebarContent() {
         </h4>
         <div className="type_wrapper">
           {data?.types.map(pokemonType => (
-              <PokemonType key={pokemonType.slot} pokemonType={pokemonType.type.name} />
+              <PokemonType key={pokemonType.slot}
+                           pokemonType={pokemonType.type.name} />
           ))}
         </div>
         <table className="pokemon_main">
@@ -37,18 +47,12 @@ export default function PokemonSidebarContent() {
               <th className="cell">{GlobalConstants.abilityColumnName}</th>
               <th className="cell">{GlobalConstants.abilityValueColumnName}</th>
             </tr>
-            {data.stats.map((unit) => (
-              <AbilityRow
-                key={unit.stat.name}
-                abilityKey={capitalizeFirstLetter(unit.stat.name)}
-                abilityValue={unit.base_stat}
-              />
-            ))}
-            <AbilityRow abilityKey={GlobalConstants.abilityWeightProperty} abilityValue={data.weight} />
-            <AbilityRow
-              abilityKey={GlobalConstants.abilityTotalMovesProperty}
-              abilityValue={data.moves.length}
-            />
+            {pokemonAbilities.map((ability) => {
+              const abilityKey = Object.keys(ability)[0];
+              return <PokemonAbility key={abilityKey}
+                                     abilityKey={capitalizeFirstLetter(abilityKey)}
+                                     abilityValue="10"/>
+            })}
           </tbody>
         </table>
       </>}
@@ -56,7 +60,7 @@ export default function PokemonSidebarContent() {
   );
 }
 
-export function AbilityRow({
+export function PokemonAbility({
   abilityKey,
   abilityValue,
 }: {

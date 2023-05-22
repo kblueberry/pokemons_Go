@@ -32,3 +32,9 @@ export function setColorHex(type: string) {
       return '#f7e80a';
   }
 }
+
+export function createPokemonAbility(prop: string, value) {
+  const obj = {};
+  obj[prop] = value
+  return obj;
+}
