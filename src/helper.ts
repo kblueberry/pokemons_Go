@@ -23,12 +23,11 @@ export function setColorHex(type: string) {
     case 'poison':
       return '#ae5bb5';
     case 'flying':
+    case 'water':
       return '#0af7f7';
     case 'bug':
-      return '#77a832';
-    case 'normal':
       return '#d91838';
-    default :
+    default:
       return '#f7e80a';
   }
 }
