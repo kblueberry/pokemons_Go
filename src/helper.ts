@@ -13,3 +13,18 @@ export function fetchOne(url: string) {
 export function capitalizeFirstLetter(value) {
   return value.charAt(0).toUpperCase() + value.slice(1)
 }
+
+export function setColorHex(type: string) {
+  switch (type) {
+    case 'grass':
+      return '#2fcc51';
+    case 'fire':
+      return '#c7591a';
+    case 'poison':
+      return '#ae5bb5';
+    case 'flying':
+      return '#0af7f7';
+    default :
+      return '#f7e80a';
+  }
+}

@@ -21,3 +21,10 @@ aside {
     border: 1px solid white;
     padding: 3px;
 }
+
+.type_wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+

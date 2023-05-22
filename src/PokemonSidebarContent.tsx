@@ -3,6 +3,7 @@ import "./spinner.css";
 import { usePokemonDetails } from "./PokemonDetailsProvider";
 import { capitalizeFirstLetter } from "./helper";
 import { GlobalConstants } from "./constants";
+import PokemonType from "./PokemonType";
 
 export default function PokemonSidebarContent() {
   const { loading, error, data } = usePokemonDetails();
@@ -25,6 +26,11 @@ export default function PokemonSidebarContent() {
         <h4 className="pokemon_content_header">
           {capitalizeFirstLetter(data.name)}
         </h4>
+        <div className="type_wrapper">
+          {data?.types.map(pokemonType => (
+              <PokemonType pokemonType={pokemonType.type.name} />
+          ))}
+        </div>
         <table width="100%" border="0">
           <tbody>
             <tr>

@@ -1,0 +1,7 @@
+.type_label {
+    margin: 0 4px;
+    padding: 0 8px;
+    border-radius: 8px;
+    width: fit-content;
+    background-color: goldenrod;
+}
