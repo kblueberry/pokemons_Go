@@ -3,17 +3,19 @@ import { useState } from "react";
 import './FilterPokemonsAction.css';
 import { GlobalConstants } from "./constants";
 
-export default function FilterPokemonsAction({pokemonTypes}: {pokemonTypes: Array<string>}) {
+export default function FilterPokemonsAction({pokemonTypes, selected}: {pokemonTypes: Array<string>, selected: any}) {
   const [filterParam, setFilterParam] = useState<string>('');
 
   const handleChange = (event: SelectChangeEvent) => {
     setFilterParam(event.target.value);
+    selected(event.target.value);
   };
 
   const BootstrapInput = styled(InputBase)(() => ({
     '& .MuiInputBase-input': {
       borderRadius: 4,
       border: '1px solid #d2d5d6',
+      color: '#d2d5d6',
       padding: '3px 26px 3px 12px',
       '&:focus': {
         borderColor: '#646cff',

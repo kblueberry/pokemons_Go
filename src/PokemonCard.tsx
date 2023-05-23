@@ -9,7 +9,7 @@ function PokemonCard({ info }: { info: PokemonGeneralInfo }) {
   return (
       <>
         <div className="pokemon_info">
-          <h5>{capitalizeFirstLetter(info.name)}</h5>
+          <h5 className="pokemon_name">{capitalizeFirstLetter(info.name)}</h5>
           <a
               className="pokemon_details_open_action"
               onClick={() => onPokemonChange(info.url)}

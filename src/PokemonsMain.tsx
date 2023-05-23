@@ -1,7 +1,7 @@
 import PokemonCard from "./PokemonCard";
 import './PokemonsMain.css';
 import { useCallback, useEffect, useState } from "react";
-import { fetchAllPokemonTypes, fetchPage } from "./api";
+import { fetchAllPokemonTypes, fetchPage, fetchPokemonsByType } from "./api";
 import { GlobalConstants } from "./constants";
 import FilterPokemonsAction from "./FilterPokemonsAction";
 
@@ -26,6 +26,13 @@ function PokemonsMain() {
     });
   }
 
+  const filterPokemons = (id: string) => {
+    fetchPokemonsByType(id).then((response: FilteredPokemons) => {
+      const filtered = response.pokemon.map(item => item.pokemon);
+      setPokemons([...filtered]);
+    });
+  }
+
   useEffect(() => {
     if (offset === 0) {
       fetchPokemons();
@@ -34,7 +41,8 @@ function PokemonsMain() {
   }, [offset, fetchPokemons]);
 
   return <div className="pokemons_container">
-    <FilterPokemonsAction pokemonTypes={pokemonTypes}/>
+    <FilterPokemonsAction pokemonTypes={pokemonTypes}
+                          selected={filterPokemons}/>
     <div className="pokemon_cards">
       {pokemons.map(pokemon => (
           <PokemonCard key={pokemon.name}

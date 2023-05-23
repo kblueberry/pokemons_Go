@@ -8,6 +8,10 @@
     border: 1px solid white;
 }
 
+.pokemon_name {
+    text-align: center;
+}
+
 .pokemon_details_open_action {
     font-size: .7em;
     font-weight: 500;

@@ -14,3 +14,8 @@ export function fetchAllPokemonTypes() {
   return fetch(`${GlobalConstants.pokemonApi}type`)
       .then(response => response.json() as PokemonsDataChunk);
 }
+
+export function fetchPokemonsByType(id: string) {
+  return fetch(`${GlobalConstants.pokemonApi}type/${id}`)
+      .then(response => response.json() as FilteredPokemons);
+}
