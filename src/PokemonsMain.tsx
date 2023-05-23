@@ -3,6 +3,7 @@ import './PokemonsMain.css';
 import { useCallback, useEffect, useState } from "react";
 import { fetchPage } from "./helper";
 import { GlobalConstants } from "./constants";
+import FilterPokemonsAction from "./FilterPokemonsAction";
 
 function PokemonsMain() {
   const [pokemons, setPokemons] = useState<Array<PokemonGeneralInfo>>([]);
@@ -25,6 +26,7 @@ function PokemonsMain() {
   }, [offset, fetchPokemons]);
 
   return <div className="pokemons_container">
+    <FilterPokemonsAction />
     <div className="pokemon_cards">
       {pokemons.map(pokemon => (
           <PokemonCard key={pokemon.name}
