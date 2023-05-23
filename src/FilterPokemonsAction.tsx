@@ -27,7 +27,8 @@ export default function FilterPokemonsAction() {
   return (
       <div className="filter_action_container">
         <span className="filter_label">Filter by type</span>
-        <Box sx={{ m: 1, minWidth: 120 }} size="small">
+        <Box sx={{ m: 1, minWidth: 120 }}
+             size="small">
           <FormControl fullWidth>
             <Select
                 value={filterParam}
