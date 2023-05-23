@@ -1,8 +1,9 @@
 import { Box, FormControl, InputBase, MenuItem, Select, SelectChangeEvent, styled } from "@mui/material";
 import { useState } from "react";
 import './FilterPokemonsAction.css';
+import { GlobalConstants } from "./constants";
 
-export default function FilterPokemonsAction() {
+export default function FilterPokemonsAction({pokemonTypes}: {pokemonTypes: Array<string>}) {
   const [filterParam, setFilterParam] = useState<string>('');
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -26,7 +27,7 @@ export default function FilterPokemonsAction() {
 
   return (
       <div className="filter_action_container">
-        <span className="filter_label">Filter by type</span>
+        <span className="filter_label">{GlobalConstants.filterAction}</span>
         <Box sx={{ m: 1, minWidth: 120 }}
              size="small">
           <FormControl fullWidth>
@@ -36,9 +37,10 @@ export default function FilterPokemonsAction() {
                 displayEmpty
                 input={<BootstrapInput/>}
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              {pokemonTypes.map(type => (
+                  <MenuItem key={type}
+                            value={type}>{type}</MenuItem>
+              ))}
             </Select>
           </FormControl>
         </Box></div>
