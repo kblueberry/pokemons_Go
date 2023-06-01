@@ -3,15 +3,17 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    flex: 0 1 100%;
+    margin-left: 35%;
 }
 
 .pokemon_cards {
     display: flex;
     flex-flow: row wrap;
+    margin-bottom: 12px;
 }
 
 .action_load_more {
-    margin-top: 15px;
     background-color: dodgerblue;
     width: 160px;
     border-radius: 8px;

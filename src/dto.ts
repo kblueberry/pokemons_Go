@@ -80,3 +80,35 @@ type Sprite = {
   versions: any,
 }
 
+type FilteredPokemons = {
+  damage_relations: DamageRelation,
+  game_indices: Array<GameIndices>,
+  generation: PokemonGeneralInfo,
+  id: number,
+  move_damage_class: PokemonGeneralInfo,
+  moves: Array<PokemonGeneralInfo>,
+  name: string,
+  names: Array<PokemonGeneralInfo>,
+  past_damage_relations: Array<DamageRelation>,
+  pokemon: Array<Pokemon>
+}
+
+type Pokemon = {
+  pokemon: PokemonGeneralInfo,
+  slot: number
+}
+
+type GameIndices = {
+  game_index: number,
+  generation: PokemonGeneralInfo
+}
+
+type DamageRelation = {
+  double_damage_from: Array<PokemonGeneralInfo>,
+  double_damage_to: Array<any>,
+  half_damage_from: Array<any>,
+  half_damage_to: Array<PokemonGeneralInfo>,
+  no_damage_from: Array<PokemonGeneralInfo>,
+  no_damage_to: Array<PokemonGeneralInfo>
+}
+

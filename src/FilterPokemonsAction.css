@@ -1,0 +1,11 @@
+.filter_action_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-basis: 36%;
+    align-self: end;
+}
+
+.filter_label {
+    font-size: 12px;
+}

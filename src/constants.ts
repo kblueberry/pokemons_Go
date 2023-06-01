@@ -7,5 +7,7 @@ export const GlobalConstants = {
   startPageOffset: 0,
   loadMoreAction: 'Load more',
   getPokemonIngoAction: 'Get info',
-  fetchPokemonError: 'An error occurred when fetching pokemon information. Please, try later.'
+  fetchPokemonError: 'An error occurred when fetching pokemon information. Please, try later.',
+  pokemonApi: 'https://pokeapi.co/api/v2/',
+  filterAction: 'Filter by type'
 };
