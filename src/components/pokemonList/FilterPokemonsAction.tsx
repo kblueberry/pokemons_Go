@@ -1,7 +1,7 @@
 import { Box, FormControl, InputBase, MenuItem, Select, SelectChangeEvent, styled } from "@mui/material";
 import { useState } from "react";
 import './FilterPokemonsAction.css';
-import { GlobalConstants } from "./constants";
+import { GlobalConstants } from "../../common/helpers/constants";
 
 export default function FilterPokemonsAction({pokemonTypes, selected}: {pokemonTypes: Array<string>, selected: any}) {
   const [filterParam, setFilterParam] = useState<string>('');

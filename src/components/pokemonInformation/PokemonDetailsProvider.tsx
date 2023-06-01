@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useContext, useState } from "react";
-import { fetchOne } from "./api";
+import { fetchOne } from "../../common/helpers/api";
 
 type PokemonDetailsState = {
   loading: boolean;
@@ -26,27 +26,38 @@ export default function PokemonDetailsProvider({
     error: null,
     data: null
   } as PokemonDetailsState);
+  const [currentPokemonApiUrl, setCurrentPokemonApiUrl] = useState<string>('');
   const { loading, error, data } = fetchState;
 
   const onChange = (url: string) => {
-    setFetchState({
-      loading: true,
-      error: null,
-    } as PokemonDetailsState);
-    fetchOne(url)
-      .then((pokemon) => {
-        setFetchState({
-          loading: false,
-          error: null,
-          data: pokemon,
-        } as PokemonDetailsState);
-      })
-      .catch((error) =>
-        setFetchState({
-          loading: false,
-          error,
-        } as PokemonDetailsState)
-      );
+    if (url === currentPokemonApiUrl) {
+      setFetchState({
+        loading: false,
+        error: null,
+        data: null
+      } as PokemonDetailsState);
+      setCurrentPokemonApiUrl('');
+    } else {
+      setFetchState({
+        loading: true,
+        error: null,
+      } as PokemonDetailsState);
+      setCurrentPokemonApiUrl(url);
+      fetchOne(url)
+          .then((pokemon) => {
+            setFetchState({
+              loading: false,
+              error: null,
+              data: pokemon,
+            } as PokemonDetailsState);
+          })
+          .catch((error) =>
+              setFetchState({
+                loading: false,
+                error,
+              } as PokemonDetailsState)
+          );
+    }
   };
 
   return (

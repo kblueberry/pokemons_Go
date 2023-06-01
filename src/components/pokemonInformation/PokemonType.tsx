@@ -1,4 +1,4 @@
-import { capitalizeFirstLetter, setColorHex } from "./helper";
+import { capitalizeFirstLetter, setColorHex } from "../../common/helpers/helper";
 import './PokemonType.css';
 
 export default function PokemonType({pokemonType}: {pokemonType: string}) {

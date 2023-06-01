@@ -1,9 +1,10 @@
 import "./PokemonSidebarContent.css";
-import "./spinner.css";
+import "../../common/components/Spinner.css";
 import { usePokemonDetails } from "./PokemonDetailsProvider";
-import { capitalizeFirstLetter, createPokemonAbility } from "./helper";
-import { GlobalConstants } from "./constants";
+import { capitalizeFirstLetter, createPokemonAbility } from "../../common/helpers/helper";
+import { GlobalConstants } from "../../common/helpers/constants";
 import PokemonType from "./PokemonType";
+import Spinner from "../../common/components/Spinner";
 
 export default function PokemonSidebarContent() {
   const { loading, error, data } = usePokemonDetails();
@@ -11,7 +12,11 @@ export default function PokemonSidebarContent() {
   if (loading) {
     return (
       <aside className="content_loading">
-        <div className="loader"></div>
+        <Spinner customStyles={{
+          width: '11em',
+          height: '11em',
+          margin: '15em auto'
+        }}/>
       </aside>
     );
   }

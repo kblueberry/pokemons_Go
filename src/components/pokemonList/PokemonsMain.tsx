@@ -1,22 +1,26 @@
 import PokemonCard from "./PokemonCard";
 import './PokemonsMain.css';
 import { useCallback, useEffect, useState } from "react";
-import { fetchAllPokemonTypes, fetchPage, fetchPokemonsByType } from "./api";
-import { GlobalConstants } from "./constants";
+import { fetchAllPokemonTypes, fetchPage, fetchPokemonsByType } from "../../common/helpers/api";
+import { GlobalConstants } from "../../common/helpers/constants";
 import FilterPokemonsAction from "./FilterPokemonsAction";
+import Spinner from "../../common/components/Spinner";
 
 function PokemonsMain() {
   const [pokemons, setPokemons] = useState<Array<PokemonGeneralInfo>>([]);
   const [offset, setOffset] = useState<number>(0);
   const [hasNext, setHasNext] = useState<boolean>(true);
   const [pokemonTypes, setPokemonTypes] = useState<Array<string>>([]);
+  const [pokemonsLoading, setPokemonsLoading] = useState<boolean>(false);
 
   const fetchPokemons = useCallback(() => {
     if (!hasNext) return;
+    setPokemonsLoading(true);
     fetchPage(offset).then((response: PokemonsDataChunk) => {
       setOffset((old: number) => old + response.results.length);
       setHasNext(!!response.next);
       setPokemons((old: Array<PokemonGeneralInfo>) => [...old, ...response.results]);
+      setPokemonsLoading(false);
     });
   }, [offset]);
 
@@ -41,18 +45,26 @@ function PokemonsMain() {
   }, [offset, fetchPokemons]);
 
   return <div className="pokemons_container">
-    <FilterPokemonsAction pokemonTypes={pokemonTypes}
-                          selected={filterPokemons}/>
-    <div className="pokemon_cards">
-      {pokemons.map(pokemon => (
-          <PokemonCard key={pokemon.name}
-                       info={pokemon}/>
-      ))}
-    </div>
-    <button className="action_load_more"
-            onClick={fetchPokemons}>
-      {GlobalConstants.loadMoreAction}
-    </button>
+    {pokemonsLoading ? <Spinner customStyles={{
+          width: '15em',
+          height: '15em',
+          margin: '25em auto'
+        }}/> :
+        <>
+          <FilterPokemonsAction pokemonTypes={pokemonTypes}
+                                selected={filterPokemons}/>
+          <div className="pokemon_cards">
+            {pokemons.map(pokemon => (
+                <PokemonCard key={pokemon.name}
+                             info={pokemon}/>
+            ))}
+          </div>
+          <button disabled={pokemonsLoading}
+                  className="action_load_more"
+                  onClick={fetchPokemons}>
+            {GlobalConstants.loadMoreAction}
+          </button>
+        </>}
   </div>
 }
 

@@ -1,7 +1,7 @@
 import "./PokemonCard.css";
-import { usePokemonDetails } from "./PokemonDetailsProvider";
-import { capitalizeFirstLetter } from "./helper";
-import { GlobalConstants } from "./constants";
+import { usePokemonDetails } from "../pokemonInformation/PokemonDetailsProvider";
+import { capitalizeFirstLetter } from "../../common/helpers/helper";
+import { GlobalConstants } from "../../common/helpers/constants";
 
 function PokemonCard({ info }: { info: PokemonGeneralInfo }) {
   const { onChange: onPokemonChange } = usePokemonDetails();

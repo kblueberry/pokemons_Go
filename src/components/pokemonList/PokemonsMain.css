@@ -7,10 +7,16 @@
     margin-left: 35%;
 }
 
+.loader {
+    align-self: center;
+}
+
 .pokemon_cards {
     display: flex;
     flex-flow: row wrap;
     margin-bottom: 12px;
+    max-height: 50em;
+    overflow-y: scroll;
 }
 
 .action_load_more {
@@ -28,6 +34,10 @@
 
 .action_load_more:hover {
     border-color: #646cff;
+}
+
+.action_load_more:disabled {
+    background-color: #9f9f9f;
 }
 
 .action_load_more:focus,
